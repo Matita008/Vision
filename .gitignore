@@ -41,4 +41,5 @@ bin/
 ### Mac OS ###
 .DS_Store
 
-
+#altro
+/src/main/java/org/matita08/VisionMC/Private.java
