@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.*;
 import net.dv8tion.jda.api.interactions.commands.build.*;
 import org.jetbrains.annotations.*;
 import org.matita08.VisionMC.*;
+import static org.matita08.VisionMC.Settings.*;
 import static org.matita08.VisionMC.Tools.*;
 import static org.matita08.VisionMC.util.Staff.*;
 
@@ -20,6 +21,9 @@ public class StaffListener extends ListenerAdapter {
   
   @Override
   public void onReady(@NotNull ReadyEvent event) {
+    /*synchronized () {
+      init(bot);
+    }*/
     for (Guild g: bot.getShardManager().getGuilds()) {
       setSlash(g);
     }
@@ -30,21 +34,25 @@ public class StaffListener extends ListenerAdapter {
   
   private static void setSlash(Guild g) {
     g.updateCommands().addCommands(Commands.slash("verify",
-                    "Send the verify message here").setDefaultPermissions(DefaultMemberPermissions.DISABLED).addOptions(new OptionData(OptionType.CHANNEL,
-                    "channel",
-                    "lascia vuoto, DEBUG ONLY!").setChannelTypes(ChannelType.TEXT))).queue();
+            "Send the verify message here").setDefaultPermissions(DefaultMemberPermissions.DISABLED).addOptions(new OptionData(OptionType.CHANNEL,
+            "channel",
+            "lascia vuoto, DEBUG ONLY!").setChannelTypes(ChannelType.TEXT))).queue();
   }
+  
   @Override
   public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
     switch(event.getName().toLowerCase()) {
-      case "verify" ->verify(event);
+      case "verify" -> verify(event);
     }
   }
   
   @Override
   public void onButtonInteraction(@NotNull ButtonInteractionEvent event) {
-    switch(event.getButton().getId().toLowerCase()) {
-      case "verify" -> verify(event);
+    String id = event.getButton().getId();
+    if(id == null) return;
+    if(id.equalsIgnoreCase("verify")) verify(event);
+    else if(id.contains("role")) {
+    
     }
     //System.out.println(event.getButton().getId());
   }
