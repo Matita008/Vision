@@ -15,13 +15,14 @@ public class Settings {
   public static long verifiedId = 0;
   public static long notVerifiedId = 0;
   
-  public static void init(Ibot b) {
+  public static synchronized void init(Ibot b) {
     if(server == null) server = b.getShardManager().getGuildById(serverId);
     if(verified == null) verified = b.getShardManager().getRoleById(verifiedId);
     if(notVerified == null) notVerified = b.getShardManager().getRoleById(notVerifiedId);
   }
   
-  public static void initAll(Ibot b) {
+  @SuppressWarnings("Unused")
+  public static synchronized void initAll(Ibot b) {
     server = b.getShardManager().getGuildById(serverId);
     verified = b.getShardManager().getRoleById(verifiedId);
     notVerified = b.getShardManager().getRoleById(notVerifiedId);

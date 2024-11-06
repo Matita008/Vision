@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.*;
 import net.dv8tion.jda.api.interactions.commands.build.*;
 import org.jetbrains.annotations.*;
 import org.matita08.VisionMC.*;
+import static org.matita08.VisionMC.Settings.*;
 import static org.matita08.VisionMC.Tools.*;
 import static org.matita08.VisionMC.util.Ticket.*;
 
@@ -23,6 +24,7 @@ public class TicketListener extends ListenerAdapter {
     for (Guild g: bot.getShardManager().getGuilds()) {
       setSlash(g);
     }
+    init(bot);
     updateActivity(bot);
     System.out.println(bot.getShardManager().getGuilds());
     System.out.println("loaded");

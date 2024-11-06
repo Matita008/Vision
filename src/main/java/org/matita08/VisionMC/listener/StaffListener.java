@@ -21,9 +21,7 @@ public class StaffListener extends ListenerAdapter {
   
   @Override
   public void onReady(@NotNull ReadyEvent event) {
-    /*synchronized () {
-      init(bot);
-    }*/
+    init(bot);
     for (Guild g: bot.getShardManager().getGuilds()) {
       setSlash(g);
     }
