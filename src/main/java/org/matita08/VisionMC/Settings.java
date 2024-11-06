@@ -21,7 +21,7 @@ public class Settings {
     if(notVerified == null) notVerified = b.getShardManager().getRoleById(notVerifiedId);
   }
   
-  @SuppressWarnings("Unused")
+  @SuppressWarnings("Unused")//TODO come cabbo era?
   public static synchronized void initAll(Ibot b) {
     server = b.getShardManager().getGuildById(serverId);
     verified = b.getShardManager().getRoleById(verifiedId);

@@ -40,7 +40,7 @@ public class StaffListener extends ListenerAdapter {
   @Override
   public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
     switch(event.getName().toLowerCase()) {
-      case "verify" -> verify(event);
+      case "verify" -> verify(event);//TODO add autorole
     }
   }
   
@@ -50,7 +50,7 @@ public class StaffListener extends ListenerAdapter {
     if(id == null) return;
     if(id.equalsIgnoreCase("verify")) verify(event);
     else if(id.contains("role")) {
-    
+    //TODO
     }
     //System.out.println(event.getButton().getId());
   }

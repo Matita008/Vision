@@ -9,7 +9,8 @@ public class Tools {
   }
   
   public static void addRole(Guild g, User u, long role) {
-    addRole(g, u, g.getRoleById(role));
+    addRole(g, u, g.getRoleById(role));//TODO also a remove would be usefull
+                                        //TODO maybe also a isPresent(Role,Member,Guild)
   }
   
   public static void addRole(Guild g, User u, Role r) {
